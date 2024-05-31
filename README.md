@@ -19,3 +19,4 @@
  
 ```
 - once you've added you db config as listed above , go to the src folder from your terminal and execute `npx sequalize db:create`
+```
