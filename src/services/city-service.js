@@ -3,11 +3,11 @@ const {cityrepository}=require('../repository/index');
 
 class cityservice {
     constructor(){
-        this.cityrepository=new cityrepository();
+        this.cityRepository=new cityrepository(); 
     }
     async createcity(data){
         try {
-            const city= await this.cityrepository.createcity(data);
+            const city= await this.cityRepository.createcity(data);
             return city;
         } catch (error) {
             console.log("something went wrong in service layer");
@@ -16,7 +16,7 @@ class cityservice {
     }
     async deletecity(cityid){
         try {
-            const respone= await this.cityrepository.deletecity(cityid);
+            const respone= await this.cityRepository.deletecity(cityid);
             return response;
         } catch (error) {
             console.log("something went wrong in service layer");
@@ -25,7 +25,7 @@ class cityservice {
     }
     async updatecity(cityid,data){
         try {
-            const city= await this.cityrepository.updatecity(cityid,data);
+            const city= await this.cityRepository.updatecity(cityid,data);
             return city;
         } catch (error) {
             console.log("something went wrong in service layer");
@@ -34,7 +34,7 @@ class cityservice {
     }
     async getcity(cityid){
         try {
-            const city= await this.getcity.updatecity(cityid);
+            const city= await this.cityRepository.getcity(cityid);
             return city;
         } catch (error) {
             console.log("something went wrong in service layer");
