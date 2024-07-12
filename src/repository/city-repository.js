@@ -41,7 +41,10 @@ class CityRepository{
     }
     async getcity(cityid){
         try {
-            const city= await City.findByPk(cityid);
+            const city= await City.findByPk( cityid,{
+                attributes: ['id', 'name', 'createdAt', 'updatedAt'] // Only select valid columns
+              });
+            console.log(city);
             return city;
         } catch (error) {
             console.log("something went wrong in repo layer");
