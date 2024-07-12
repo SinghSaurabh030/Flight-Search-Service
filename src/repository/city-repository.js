@@ -1,4 +1,5 @@
 const {City} = require('../models/index'); 
+const {Op} = require('sequelize');
 
 class CityRepository{
     async createcity({name}){
@@ -47,6 +48,28 @@ class CityRepository{
             console.log(city);
             return city;
         } catch (error) {
+            console.log("something went wrong in repo layer");
+            throw(error);
+        }
+    }
+    async getAll(filter){
+        try{
+            if(filter.name){
+                const city=await City.findAll({
+                    attributes: ['id', 'name', 'createdAt', 'updatedAt'],
+                    where:{
+                        name:{[Op.startsWith] : filter.name}
+
+                    }
+                });
+                return city;
+            }
+            const city=await City.findAll({
+                attributes: ['id', 'name', 'createdAt', 'updatedAt'] // Only select valid columns
+              });
+            console.log(city);
+            return city;
+        }catch(error){
             console.log("something went wrong in repo layer");
             throw(error);
         }
