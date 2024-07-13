@@ -56,7 +56,6 @@ class CityRepository{
         try{
             if(filter.name){
                 const city=await City.findAll({
-                    attributes: ['id', 'name', 'createdAt', 'updatedAt'],
                     where:{
                         name:{[Op.startsWith] : filter.name}
 
@@ -64,9 +63,7 @@ class CityRepository{
                 });
                 return city;
             }
-            const city=await City.findAll({
-                attributes: ['id', 'name', 'createdAt', 'updatedAt'] // Only select valid columns
-              });
+            const city=await City.findAll();
             console.log(city);
             return city;
         }catch(error){
