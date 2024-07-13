@@ -71,5 +71,18 @@ class CityRepository{
             throw(error);
         }
     }
+async createMany(cities){
+    try{
+    if (!Array.isArray(cities)) {
+      return res.status(400).send({ error: 'Request body must be an array of objects' });
+    }
+    const createdCity = await City.bulkCreate(cities);
+    return createdCity;
+    }catch(error){
+        console.log("something went wrong in repo layer");
+        throw(error);
+    }
+}
+
 }
 module.exports =CityRepository;

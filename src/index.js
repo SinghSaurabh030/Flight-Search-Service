@@ -15,32 +15,20 @@ const setupandstartserver = async() => {
     app.use(bodyParser.json()); 
     app.use(bodyParser.urlencoded({extended:true}));
     app.use('/api',apiRoutes);
- 
+    
 
     app.listen(PORT,async()=>{
         console.log(`server started at ${PORT}`);
 
-        // const city=await City.findOne({
-        //     where:{
-        //         id:4
+        // app.get('/del',async (req,res)=>{
+        //     const cities = req.body;
+        //     if (!Array.isArray(cities)) {
+        //       return res.status(400).send({ error: 'Request body must be an array of objects' });
         //     }
+        //     const createdCity = await City.bulkCreate(cities);
+        //     res.status(201).send(createdCity);
         // });
-        // const airport=await city.getAirports();
-        // let newAirport=await Airport.create({
-        //     name: 'Behala Airport',
-        //     cityId:8
-        // });
-
-        const city=await City.findOne({
-            where:{id : 4}
-        });
-        const newAirport=await Airport.findOne({
-            where:{id : 5}
-        });
-
-        console.log(city,newAirport);
-        await city.addAirport(newAirport);
-
+        
 
     });
 }

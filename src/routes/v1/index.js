@@ -3,6 +3,7 @@ const CityControllers = require('../../controllers/city-controller');
 
 const router = express.Router();
 
+router.post('/city/all',CityControllers.createMany);
 router.get('/city/all',CityControllers.getAll);
 router.post('/city',CityControllers.create);
 router.delete('/city/:id',CityControllers.destroy);
